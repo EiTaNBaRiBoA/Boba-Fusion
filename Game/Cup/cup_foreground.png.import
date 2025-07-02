@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0hqigjmvhkax"
-path="res://.godot/imported/cup_foreground.png-0934c7e150792f68bdddeb806e4706cd.ctex"
+path="res://.godot/imported/cup_foreground.png-4a12b9579e5bf0558d2836de56722040.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Cup/cup_foreground.png"
-dest_files=["res://.godot/imported/cup_foreground.png-0934c7e150792f68bdddeb806e4706cd.ctex"]
+source_file="res://game/cup/cup_foreground.png"
+dest_files=["res://.godot/imported/cup_foreground.png-4a12b9579e5bf0558d2836de56722040.ctex"]
 
 [params]
 

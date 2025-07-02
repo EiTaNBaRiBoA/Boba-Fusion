@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db0iuuks6k8d3"
-path="res://.godot/imported/cup_content_clip.png-37cfca83704541aa2e2a6f943677bbdb.ctex"
+path="res://.godot/imported/cup_content_clip.png-02fd856123cce644c6c0176830a83bed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Cup/cup_content_clip.png"
-dest_files=["res://.godot/imported/cup_content_clip.png-37cfca83704541aa2e2a6f943677bbdb.ctex"]
+source_file="res://game/cup/cup_content_clip.png"
+dest_files=["res://.godot/imported/cup_content_clip.png-02fd856123cce644c6c0176830a83bed.ctex"]
 
 [params]
 

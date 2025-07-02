@@ -11,20 +11,28 @@ config_version=5
 [application]
 
 config/name="Boba Fusion"
-run/main_scene="res://App.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/version="20240905"
+run/main_scene="res://app.tscn"
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0.996078, 0.541176, 0.545098, 1)
-config/icon="res://Logos/AppIcon1024.png"
+boot_splash/image="res://logos/boot_splash.png"
+config/icon="res://logos/app_icon_1024.png"
+boot_splash/minimum_display_time=30
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/size/window_width_override=720
-window/size/window_height_override=1600
+window/size/borderless=true
+window/size/window_width_override=645
+window/size/window_height_override=1398
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[editor]
+
+movie_writer/movie_file="/Users/iohann/Movies/boba_fusion_recording.avi"
 
 [input_devices]
 
@@ -36,6 +44,7 @@ locale/translations=PackedStringArray("res://Menu/Translation/translation.en.tra
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.623297, 0.89, 0.6141, 1)

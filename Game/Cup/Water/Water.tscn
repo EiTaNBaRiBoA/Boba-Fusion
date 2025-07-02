@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://df13g2im2tb7f"]
 
-[ext_resource type="PackedScene" uid="uid://c3vjdnud777ry" path="res://Game/Cup/Water/WaterSpring.tscn" id="2_2e2mm"]
-[ext_resource type="Script" path="res://Game/Cup/Water/Water.gd" id="2_divnn"]
-[ext_resource type="PackedScene" uid="uid://bd665dkcond6p" path="res://Game/Cup/Water/SplashParticles.tscn" id="3_bbq7x"]
-[ext_resource type="Script" path="res://Game/Cup/Water/SmoothPath.gd" id="3_gyycj"]
+[ext_resource type="PackedScene" uid="uid://c3vjdnud777ry" path="res://game/cup/water/water_spring.tscn" id="2_2e2mm"]
+[ext_resource type="Script" uid="uid://b487ycik1ikw4" path="res://game/cup/water/water.gd" id="2_divnn"]
+[ext_resource type="PackedScene" uid="uid://bd665dkcond6p" path="res://game/cup/water/splash_particules.tscn" id="3_bbq7x"]
+[ext_resource type="Script" uid="uid://c1aaks3yvfbaq" path="res://game/cup/water/smooth_path.gd" id="3_gyycj"]
 
 [sub_resource type="Curve2D" id="1"]
 

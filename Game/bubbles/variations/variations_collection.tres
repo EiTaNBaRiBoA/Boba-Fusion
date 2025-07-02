@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=14 format=3 uid="uid://cep6thu0b61hv"]
+
+[ext_resource type="Script" uid="uid://c8scpcikm62d1" path="res://game/bubbles/variations/bubble_variation.gd" id="1_ncigp"]
+[ext_resource type="Resource" uid="uid://dtddrbijjf6ue" path="res://game/bubbles/variations/variation_00.tres" id="2_3kmok"]
+[ext_resource type="Resource" uid="uid://ckdo84gk5foy6" path="res://game/bubbles/variations/variation_01.tres" id="3_aux4l"]
+[ext_resource type="Resource" uid="uid://co07isis4ialu" path="res://game/bubbles/variations/variation_02.tres" id="4_whiug"]
+[ext_resource type="Resource" uid="uid://c8uifnga30rjl" path="res://game/bubbles/variations/variation_03.tres" id="5_ohbur"]
+[ext_resource type="Resource" uid="uid://dnmxw6o02j5dc" path="res://game/bubbles/variations/variation_04.tres" id="6_fj1k5"]
+[ext_resource type="Resource" uid="uid://c7himurm3lvue" path="res://game/bubbles/variations/variation_05.tres" id="7_wxuob"]
+[ext_resource type="Resource" uid="uid://0flp7uir6mdf" path="res://game/bubbles/variations/variation_06.tres" id="8_5gmvi"]
+[ext_resource type="Resource" uid="uid://dkolv1vrfsvwb" path="res://game/bubbles/variations/variation_07.tres" id="9_8q5qk"]
+[ext_resource type="Resource" uid="uid://dtjqtydysghsx" path="res://game/bubbles/variations/variation_08.tres" id="10_rrvil"]
+[ext_resource type="Resource" uid="uid://bf8seax44ve2t" path="res://game/bubbles/variations/variation_09.tres" id="11_dgymo"]
+[ext_resource type="Resource" uid="uid://bwq1hvhc81165" path="res://game/bubbles/variations/variation_10.tres" id="12_8ykvx"]
+[ext_resource type="Script" uid="uid://d0a0kyqnp324e" path="res://game/bubbles/variations/variations_collection.gd" id="13_jkmoq"]
+
+[resource]
+script = ExtResource("13_jkmoq")
+collection = Array[ExtResource("1_ncigp")]([ExtResource("2_3kmok"), ExtResource("3_aux4l"), ExtResource("4_whiug"), ExtResource("5_ohbur"), ExtResource("6_fj1k5"), ExtResource("7_wxuob"), ExtResource("8_5gmvi"), ExtResource("9_8q5qk"), ExtResource("10_rrvil"), ExtResource("11_dgymo"), ExtResource("12_8ykvx")])

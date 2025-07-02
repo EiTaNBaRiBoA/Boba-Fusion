@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtfufs0ee1tp8"]
 
-[ext_resource type="Script" path="res://Game/HUD/SafeAreaControl.gd" id="1_7f1rj"]
-[ext_resource type="Theme" uid="uid://64pdbwltrypl" path="res://Menu/Theme/ButtonMenu.tres" id="2_t14s8"]
-[ext_resource type="Theme" uid="uid://c6f12tviwtlps" path="res://Menu/Theme/Headline01.tres" id="3_j0q4v"]
-[ext_resource type="Script" path="res://Game/HUD/ScoreLabel.gd" id="4_ejnny"]
-[ext_resource type="Theme" uid="uid://uycnh5ld76ni" path="res://Menu/Theme/Headline03.tres" id="5_jgii1"]
-[ext_resource type="Theme" uid="uid://ce7llfwqtkwqy" path="res://Menu/Theme/Headline02.tres" id="6_0niop"]
-[ext_resource type="Script" path="res://Game/HUD/MultiplicatorLabel.gd" id="7_h3ygc"]
+[ext_resource type="Script" uid="uid://b0gy2qn3lnnf6" path="res://game/hud/safe_area_control.gd" id="1_7f1rj"]
+[ext_resource type="Theme" uid="uid://64pdbwltrypl" path="res://menu/theme/menu_button.tres" id="2_t14s8"]
+[ext_resource type="Theme" uid="uid://c6f12tviwtlps" path="res://menu/theme/headline_01.tres" id="3_j0q4v"]
+[ext_resource type="Script" uid="uid://dst0d7wosc564" path="res://game/hud/score_label.gd" id="4_ejnny"]
+[ext_resource type="Theme" uid="uid://uycnh5ld76ni" path="res://menu/theme/headline_03.tres" id="5_jgii1"]
+[ext_resource type="Theme" uid="uid://ce7llfwqtkwqy" path="res://menu/theme/headline_02.tres" id="6_0niop"]
+[ext_resource type="Script" uid="uid://c0fcuqnhwkeb1" path="res://game/hud/multiplier_label.gd" id="7_h3ygc"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3

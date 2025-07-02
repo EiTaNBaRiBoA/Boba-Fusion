@@ -1,14 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmrgb02ubyixl"]
+[gd_scene load_steps=13 format=3 uid="uid://dmrgb02ubyixl"]
 
-[ext_resource type="Texture2D" uid="uid://cr4rfl3dgsabd" path="res://Game/Cup/cup_background.png" id="1_85lxg"]
-[ext_resource type="Script" path="res://Game/Cup/Cup.gd" id="1_gm2q5"]
-[ext_resource type="Texture2D" uid="uid://b6oul4x0bcq8j" path="res://Game/Cup/tmpref.jpg" id="1_in0aw"]
-[ext_resource type="Texture2D" uid="uid://bbhtxknp85v7v" path="res://Game/Cup/cup_border.png" id="1_xykj8"]
-[ext_resource type="AudioStream" uid="uid://cia0gvyjx7ijd" path="res://Game/Cup/alarm.mp3" id="2_ahxwj"]
-[ext_resource type="Texture2D" uid="uid://db0iuuks6k8d3" path="res://Game/Cup/cup_content_clip.png" id="2_ds6ws"]
-[ext_resource type="PackedScene" uid="uid://df13g2im2tb7f" path="res://Game/Cup/Water/Water.tscn" id="2_u7ufh"]
-[ext_resource type="AudioStream" uid="uid://ciwphni1n2nl5" path="res://Game/Cup/alarm_long.mp3" id="3_0rn6c"]
-[ext_resource type="Texture2D" uid="uid://d0hqigjmvhkax" path="res://Game/Cup/cup_foreground.png" id="7_6jhfo"]
+[ext_resource type="Texture2D" uid="uid://cr4rfl3dgsabd" path="res://game/cup/cup_background.png" id="1_85lxg"]
+[ext_resource type="Script" uid="uid://dkbvnggvs34ns" path="res://game/cup/cup.gd" id="1_gm2q5"]
+[ext_resource type="Texture2D" uid="uid://bbhtxknp85v7v" path="res://game/cup/cup_border.png" id="1_xykj8"]
+[ext_resource type="AudioStream" uid="uid://cia0gvyjx7ijd" path="res://game/cup/alarm.mp3" id="2_ahxwj"]
+[ext_resource type="Texture2D" uid="uid://db0iuuks6k8d3" path="res://game/cup/cup_content_clip.png" id="2_ds6ws"]
+[ext_resource type="PackedScene" uid="uid://df13g2im2tb7f" path="res://game/cup/water/water.tscn" id="2_u7ufh"]
+[ext_resource type="AudioStream" uid="uid://ciwphni1n2nl5" path="res://game/cup/alarm_long.mp3" id="3_0rn6c"]
+[ext_resource type="Texture2D" uid="uid://d0hqigjmvhkax" path="res://game/cup/cup_foreground.png" id="7_6jhfo"]
 
 [sub_resource type="Animation" id="7"]
 length = 0.001
@@ -99,8 +98,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fwvuy"]
 _data = {
-"RESET": SubResource("7"),
-"in_limit": SubResource("6")
+&"RESET": SubResource("7"),
+&"in_limit": SubResource("6")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d124v"]
@@ -112,16 +111,11 @@ script = ExtResource("1_gm2q5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fwvuy")
+&"": SubResource("AnimationLibrary_fwvuy")
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
-
-[node name="TmpRef" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(739, -30)
-texture = ExtResource("1_in0aw")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_85lxg")

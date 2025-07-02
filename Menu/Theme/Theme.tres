@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://b5q1hkg1a5ne0"]
 
-[ext_resource type="Texture2D" uid="uid://hckqq5dsxb2h" path="res://Menu/Theme/panel.png" id="1_e7hfb"]
+[ext_resource type="Texture2D" uid="uid://hckqq5dsxb2h" path="res://menu/theme/panel.png" id="1_e7hfb"]
 
 [sub_resource type="StyleBoxEmpty" id="11"]
 

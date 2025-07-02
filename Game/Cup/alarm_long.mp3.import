@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ciwphni1n2nl5"
-path="res://.godot/imported/alarm_long.mp3-e65fdae93b87586bc89f5492c14e7ff6.mp3str"
+path="res://.godot/imported/alarm_long.mp3-7e2ccf01bf2076e577e5e9f5a8ca5ffc.mp3str"
 
 [deps]
 
-source_file="res://Game/Cup/alarm_long.mp3"
-dest_files=["res://.godot/imported/alarm_long.mp3-e65fdae93b87586bc89f5492c14e7ff6.mp3str"]
+source_file="res://game/cup/alarm_long.mp3"
+dest_files=["res://.godot/imported/alarm_long.mp3-7e2ccf01bf2076e577e5e9f5a8ca5ffc.mp3str"]
 
 [params]
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BubbleVariation" load_steps=4 format=3 uid="uid://dtddrbijjf6ue"]
+
+[ext_resource type="Script" uid="uid://c8scpcikm62d1" path="res://game/bubbles/variations/bubble_variation.gd" id="1_fw7tp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3qqmo"]
+load_path = "res://.godot/imported/tiapoca_bubbles.png-5218c58a1a3c9d2aace91dfe6f91ee63.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elmp4"]
+atlas = SubResource("CompressedTexture2D_3qqmo")
+region = Rect2(0, 0, 260, 260)
+
+[resource]
+script = ExtResource("1_fw7tp")
+points = 2
+texture = SubResource("AtlasTexture_elmp4")
+color = Color(0.992157, 0.368627, 0.792157, 1)
+radius = 20.0
+metadata/_custom_type_script = "uid://c8scpcikm62d1"

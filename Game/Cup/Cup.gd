@@ -31,6 +31,7 @@ var is_overflowed := false
 
 @onready var animation_player := $AnimationPlayer
 @onready var water := $WaterClip/Water
+@onready var limit_area := $WaterClip/Water/LimitArea2D
 
 
 func reset():
@@ -47,7 +48,7 @@ func _on_limit_area_2d_body_entered(body: Node2D) -> void:
 	body_in_limit_area += 1
 	
 	body.in_danger = true
-	if not (is_overflowed or is_in_danger):
+	if not is_overflowed and not is_in_danger:
 		is_in_danger = true
 
 

@@ -13,18 +13,10 @@ const TOP_SCREEN_MARIN := 350 #px
 const BOTTOM_SCREEN_MARGIN := 50 #px
 const CLAW_BOX_MARING := 105
 
-const CLAW_BUBBLES := [0, 1, 2, 3, 4]
-const CLAW_START_SEQUENCE := [0, 0, 1, 2]
-
 const MULTIPLICATOR_MAX := 8
-
 
 @export var BubbleScene: PackedScene
 @export var tints_list: Resource
-
-var claw_index := 0 # total amout of bubbles loaded
-var bubbles_unlocked = [] # bubble autorized to be loaded, bubble of the claw list can only be loaded if already seen in the current game
-var next_bubble_type: int
 
 var score := 0:
 	set(x):
@@ -43,6 +35,7 @@ var multiplicator := 0:
 @onready var multiplicator_timer := $MultiplicatorTimer
 @onready var pop_timer := $PopTimer
 @onready var claw := $Claw
+@onready var claw_loader := $Claw/ClawLoader
 @onready var cup := $Cup
 @onready var bubbles := $Bubbles
 @onready var camera := $Camera2D
@@ -59,43 +52,21 @@ func _on_menu_button_pressed() -> void:
 
 
 func start():
-	next_bubble_type = roll_next_bubble()
+	#claw_loader.roll_next_bubble()
 	load_claw()
 
 
-func roll_next_bubble() -> int:
-	var type = 0
-	if claw_index < len(CLAW_START_SEQUENCE):
-		type = CLAW_START_SEQUENCE[claw_index] # in this order
-		claw_index += 1 
-	
-	else:
-		type = bubbles_unlocked.pick_random()
-	
-	return type
-
-
 func load_claw():
+	claw_loader.roll_next_bubble()
 	
 	var bubble: TapiocaBubble = BubbleScene.instantiate()
 	bubbles.add_child(bubble)
-	bubble.type = next_bubble_type
+	bubble.variation = claw_loader.next_variation
 	bubble.fusionned.connect(_on_bubble_fusionned)
-	
 	claw.load_bubble(bubble)
 	
-	unlock_bubble(bubble.type)
-	next_bubble_type = roll_next_bubble()
-
-
-func unlock_bubble(type: int):
-	if not type in CLAW_BUBBLES:
-		return
-	
-	if type in bubbles_unlocked:
-		return
-	
-	bubbles_unlocked.append(type)
+	print_rich(bubble.variation)
+	print_stack()
 
 
 func _on_Claw_armed():
@@ -103,9 +74,10 @@ func _on_Claw_armed():
 
 
 func _on_bubble_fusionned(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble):
-	var next_type := bubble_a.get_evolution_type()
-	score_color = TapiocaBubble.get_color(next_type)
-	unlock_bubble(next_type)
+	var next_variation := bubble_a.get_evolution()
+	
+	claw_loader.unlock_bubble(next_variation)
+	score_color = next_variation.color
 	
 	multiplicator = min(MULTIPLICATOR_MAX, multiplicator + 1)
 	score += (2*bubble_b.points) * multiplicator
@@ -144,7 +116,6 @@ func end():
 		pop_timer.start(time)
 		await pop_timer.timeout
 	
-	
 	pop_timer.start(1.0)
 	await pop_timer.timeout
 	ended.emit()
@@ -160,10 +131,8 @@ func _comp_bubble_heigth(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble):
 func reset():
 	self.score = 0
 	cup.reset()
-	
-	claw_index = 0
-	bubbles_unlocked.clear()
 	claw.unload()
+	claw_loader.reset()
 	
 	for bubble in bubbles.get_children():
 		bubble.delete()

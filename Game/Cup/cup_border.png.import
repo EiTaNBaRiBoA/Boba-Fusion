@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbhtxknp85v7v"
-path="res://.godot/imported/cup_border.png-05fc4845c18d11f4722726f8f7588c7e.ctex"
+path="res://.godot/imported/cup_border.png-4c84355abae98a332e9bf18aaeddbead.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Cup/cup_border.png"
-dest_files=["res://.godot/imported/cup_border.png-05fc4845c18d11f4722726f8f7588c7e.ctex"]
+source_file="res://game/cup/cup_border.png"
+dest_files=["res://.godot/imported/cup_border.png-4c84355abae98a332e9bf18aaeddbead.ctex"]
 
 [params]
 
