@@ -5,8 +5,10 @@
 *.png~
 
 # Godot exports
+*.aab
 *.apk
 *.apk.idsig
+android/.build_version
 */build
 /html
 
