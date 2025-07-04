@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drgcaditud167"]
+[gd_scene load_steps=16 format=3 uid="uid://drgcaditud167"]
 
 [ext_resource type="Script" uid="uid://da8s26aka277p" path="res://game/game.gd" id="1_oomkl"]
 [ext_resource type="PackedScene" uid="uid://dj8ny165wopn5" path="res://game/bubbles/tapiocas_bubble.tscn" id="2_b686c"]
@@ -7,24 +7,21 @@
 [ext_resource type="Script" uid="uid://b7dk7wxlw0f6v" path="res://game/user_input_controller.gd" id="5_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://dmrgb02ubyixl" path="res://game/cup/cup.tscn" id="6_glinl"]
 [ext_resource type="PackedScene" uid="uid://6tiamexa1ooy" path="res://game/claw/claw.tscn" id="7_72g0p"]
-[ext_resource type="Script" uid="uid://db0ymn45moyya" path="res://game/claw/claw_loader.gd" id="8_y36n6"]
+[ext_resource type="Script" uid="uid://db0ymn45moyya" path="res://game/claw/claw_magazine.gd" id="8_y36n6"]
 [ext_resource type="Script" uid="uid://c8scpcikm62d1" path="res://game/bubbles/variations/bubble_variation.gd" id="9_l8g03"]
 [ext_resource type="Resource" uid="uid://dtddrbijjf6ue" path="res://game/bubbles/variations/variation_00.tres" id="10_b686c"]
 [ext_resource type="Resource" uid="uid://ckdo84gk5foy6" path="res://game/bubbles/variations/variation_01.tres" id="11_hb504"]
 [ext_resource type="Resource" uid="uid://co07isis4ialu" path="res://game/bubbles/variations/variation_02.tres" id="12_ee6o4"]
 [ext_resource type="Resource" uid="uid://c8uifnga30rjl" path="res://game/bubbles/variations/variation_03.tres" id="13_4cobl"]
 [ext_resource type="Resource" uid="uid://dnmxw6o02j5dc" path="res://game/bubbles/variations/variation_04.tres" id="14_ln7ps"]
+[ext_resource type="Script" uid="uid://baden6mwcgfux" path="res://game/bubbles_pool.gd" id="15_hb504"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oomkl")
-BubbleScene = ExtResource("2_b686c")
 tints_list = ExtResource("3_kul4i")
 
 [node name="MultiplicatorTimer" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
-
-[node name="PopTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -52,22 +49,28 @@ position = Vector2(0, -614)
 [node name="Claw" parent="." instance=ExtResource("7_72g0p")]
 position = Vector2(0, -1019)
 
-[node name="ClawLoader" type="Node" parent="Claw"]
+[node name="ClawManagazine" type="Node2D" parent="Claw" node_paths=PackedStringArray("bubbles_pool")]
+position = Vector2(0, -200)
 script = ExtResource("8_y36n6")
 start_sequence = Array[ExtResource("9_l8g03")]([ExtResource("10_b686c"), ExtResource("10_b686c"), ExtResource("11_hb504"), ExtResource("12_ee6o4")])
 bubble_variations = Array[ExtResource("9_l8g03")]([ExtResource("10_b686c"), ExtResource("11_hb504"), ExtResource("12_ee6o4"), ExtResource("13_4cobl"), ExtResource("14_ln7ps")])
+BubbleScene = ExtResource("2_b686c")
+bubbles_pool = NodePath("../../BubblesPool")
 
-[node name="Bubbles" type="Node2D" parent="."]
+[node name="BubblesPool" type="Node2D" parent="."]
+script = ExtResource("15_hb504")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -640)
 
 [connection signal="multiplicator_updated" from="." to="Foreground/HUD/MarginContainer/HBoxContainer/Pivot/MultiplicatorControl" method="_on_game_multiplicator_updated"]
 [connection signal="score_updated" from="." to="Foreground/HUD/MarginContainer/HBoxContainer/Pivot/ScoreControl" method="_on_game_score_updated"]
-[connection signal="timeout" from="MultiplicatorTimer" to="." method="_on_MultiplicatorTimer_timeout"]
+[connection signal="timeout" from="MultiplicatorTimer" to="." method="_on_multiplicator_timer_timeout"]
 [connection signal="pressed" from="Foreground/HUD/MarginContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="bubble_dropped" from="UserInputsController" to="Claw" method="_on_user_inputs_controller_bubble_dropped"]
 [connection signal="overflowed" from="Cup" to="." method="_on_cup_overflowed"]
-[connection signal="armed" from="Claw" to="." method="_on_Claw_armed"]
+[connection signal="armed" from="Claw" to="Claw/ClawManagazine" method="_on_claw_armed"]
+[connection signal="dropped" from="Claw" to="Claw/ClawManagazine" method="_on_claw_dropped"]
+[connection signal="loaded" from="Claw/ClawManagazine" to="." method="_on_claw_managazine_loaded"]
 
 [editable path="Foreground/HUD"]

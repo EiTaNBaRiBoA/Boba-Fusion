@@ -15,7 +15,6 @@ const CLAW_BOX_MARING := 105
 
 const MULTIPLICATOR_MAX := 8
 
-@export var BubbleScene: PackedScene
 @export var tints_list: Resource
 
 var score := 0:
@@ -33,11 +32,10 @@ var multiplicator := 0:
 @onready var foreground := $Foreground #HUD
 
 @onready var multiplicator_timer := $MultiplicatorTimer
-@onready var pop_timer := $PopTimer
 @onready var claw := $Claw
-@onready var claw_loader := $Claw/ClawLoader
+@onready var claw_magazine := $Claw/ClawManagazine
 @onready var cup := $Cup
-@onready var bubbles := $Bubbles
+@onready var bubbles_pool := $BubblesPool
 @onready var camera := $Camera2D
 
 
@@ -52,31 +50,18 @@ func _on_menu_button_pressed() -> void:
 
 
 func start():
-	#claw_loader.roll_next_bubble()
-	load_claw()
+	claw_magazine.attach()
 
 
-func load_claw():
-	claw_loader.roll_next_bubble()
-	
-	var bubble: TapiocaBubble = BubbleScene.instantiate()
-	bubbles.add_child(bubble)
-	bubble.variation = claw_loader.next_variation
+func _on_claw_managazine_loaded(bubble: TapiocaBubble) -> void:
 	bubble.fusionned.connect(_on_bubble_fusionned)
-	claw.load_bubble(bubble)
-	
-	print_rich(bubble.variation)
-	print_stack()
-
-
-func _on_Claw_armed():
-	load_claw()
+	bubble.poped.connect(_on_bubble_poped.bind(bubble))
 
 
 func _on_bubble_fusionned(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble):
 	var next_variation := bubble_a.get_evolution()
 	
-	claw_loader.unlock_bubble(next_variation)
+	claw_magazine.unlock_bubble(next_variation)
 	score_color = next_variation.color
 	
 	multiplicator = min(MULTIPLICATOR_MAX, multiplicator + 1)
@@ -84,8 +69,12 @@ func _on_bubble_fusionned(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble):
 	multiplicator_timer.start()
 
 
-func _on_MultiplicatorTimer_timeout():
-	self.multiplicator = 0
+func _on_bubble_poped(p_bubble: TapiocaBubble):
+	score += p_bubble.points
+
+
+func _on_multiplicator_timer_timeout() -> void:
+	multiplicator = 0
 
 
 func _on_cup_overflowed() -> void:
@@ -93,46 +82,15 @@ func _on_cup_overflowed() -> void:
 
 
 func end():
-	
-	claw.unload()
-	
-	var bubbles_sorted := bubbles.get_children()
-	bubbles_sorted.sort_custom(_comp_bubble_heigth)
-	
-	var max_time := 0.35
-	var min_time := 0.1
-	
-	var i := 0
-	for bubble in bubbles_sorted:
-		if not is_instance_valid(bubble):
-			continue
-		
-		self.score += bubble.points
-		bubble.pop()
-	
-		var time = lerp(max_time, min_time, float(i/5.0))
-		i += 1
-		
-		pop_timer.start(time)
-		await pop_timer.timeout
-	
-	pop_timer.start(1.0)
-	await pop_timer.timeout
+	claw.unarm()
+	claw_magazine.detach()
+	await bubbles_pool.pop_bubbles()
 	ended.emit()
 
 
-func _comp_bubble_heigth(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble):
-	if bubble_a.in_danger == bubble_b.in_danger:
-		return bubble_a.global_position.y < bubble_b.global_position.y
-	
-	return bubble_a.in_danger
-
-
 func reset():
-	self.score = 0
+	score = 0
 	cup.reset()
-	claw.unload()
-	claw_loader.reset()
-	
-	for bubble in bubbles.get_children():
-		bubble.delete()
+	claw.unarm()
+	claw_magazine.reset()
+	bubbles_pool.clean()

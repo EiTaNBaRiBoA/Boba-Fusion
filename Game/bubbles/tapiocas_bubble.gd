@@ -2,7 +2,9 @@ extends RigidBody2D
 class_name TapiocaBubble
 
 
-signal fusionned(bubble_a, bubble_b)
+signal growned
+signal fusionned(bubble_a: TapiocaBubble, bubble_b: TapiocaBubble)
+signal poped
 
 
 const BASE_RADIUS := 108.0
@@ -132,7 +134,6 @@ func get_collision_shape() -> Shape2D:
 
 
 func grow(from_fusion := false):
-	
 	if from_fusion:
 		audio_player_a.pitch_scale = randf_range(0.95, 1.05)
 		audio_player_b.pitch_scale = randf_range(0.98, 1.02)
@@ -142,6 +143,7 @@ func grow(from_fusion := false):
 	tween.tween_property(self, "size", 1.0, GROW_DURATION
 		).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
+	growned.emit()
 
 
 func fall(impulse: int = 1):
@@ -156,9 +158,9 @@ func _on_invincibility_timeout():
 
 func pop():
 	set_deferred("physic_activated", false)
-	
 	audio_player_a.pitch_scale = randf_range(0.95, 1.05)
 	animation_player.play("pop")
+	poped.emit()
 	await animation_player.animation_finished
 
 
@@ -197,7 +199,6 @@ func evolve(pos: Vector2 = global_position):
 
 
 func _process(_delta):
-	
 	if falling:
 		animated_face.play("falling")
 	
@@ -226,7 +227,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 	
 	var angular_drag = -0.5*fluid_density*state.angular_velocity*abs(state.angular_velocity)*A*Cd
 	state.apply_torque(angular_drag)
-	
+
 
 func _on_body_entered(body):
 	

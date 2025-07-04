@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dj8ny165wopn5"]
+[gd_scene load_steps=21 format=3 uid="uid://dj8ny165wopn5"]
 
 [ext_resource type="Script" uid="uid://blldwtgng4rra" path="res://game/bubbles/tapiocas_bubble.gd" id="1_53xvf"]
 [ext_resource type="AudioStream" uid="uid://c1bb80p54ouok" path="res://game/bubbles/juice.mp3" id="2_04bip"]
@@ -238,8 +238,15 @@ _data = {
 &"warning": SubResource("11")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jtp35"]
+load_path = "res://.godot/imported/tiapoca_bubbles.png-b52452c3949a833913756524e3cebbac.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssgdb"]
+atlas = SubResource("CompressedTexture2D_jtp35")
+region = Rect2(2600, 0, 260, 260)
+
 [sub_resource type="CircleShape2D" id="4"]
-radius = 108.0
+radius = 130.0
 
 [sub_resource type="Curve" id="7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0786517, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -263,10 +270,11 @@ libraries = {
 wait_time = 1.5
 one_shot = true
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ssgdb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Scaler" type="Marker2D" parent="."]
 
