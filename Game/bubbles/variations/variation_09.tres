@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="BubbleVariation" load_steps=4 format=3 uid="uid://bf8seax44ve2t"]
 
 [ext_resource type="Script" uid="uid://c8scpcikm62d1" path="res://game/bubbles/variations/bubble_variation.gd" id="1_he3er"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qpa8w"]
-load_path = "res://.godot/imported/tiapoca_bubbles.png-b52452c3949a833913756524e3cebbac.ctex"
+[ext_resource type="Texture2D" uid="uid://de0al08ocuuqw" path="res://game/bubbles/variations/tapioca_bubble.png" id="2_he3er"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he3er"]
-atlas = SubResource("CompressedTexture2D_qpa8w")
+atlas = ExtResource("2_he3er")
 region = Rect2(2340, 0, 260, 260)
 
 [resource]
