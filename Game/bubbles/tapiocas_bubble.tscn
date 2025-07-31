@@ -10,6 +10,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b88didkxh1fa7" path="res://game/bubbles/faces/cool_faces.tres" id="5_v28u1"]
 [ext_resource type="SpriteFrames" uid="uid://cugwfhmn460oi" path="res://game/bubbles/faces/shy_faces.tres" id="6_012o6"]
 [ext_resource type="Texture2D" uid="uid://v6w6g6wsfsbh" path="res://game/bubbles/particules.png" id="7_bxwlb"]
+[ext_resource type="Texture2D" uid="uid://de0al08ocuuqw" path="res://game/bubbles/variations/tapioca_bubble.png" id="10_v28u1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1817j"]
 bounce = 0.1
@@ -238,11 +239,8 @@ _data = {
 &"warning": SubResource("11")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jtp35"]
-load_path = "res://.godot/imported/tiapoca_bubbles.png-b52452c3949a833913756524e3cebbac.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssgdb"]
-atlas = SubResource("CompressedTexture2D_jtp35")
+atlas = ExtResource("10_v28u1")
 region = Rect2(2600, 0, 260, 260)
 
 [sub_resource type="CircleShape2D" id="4"]
